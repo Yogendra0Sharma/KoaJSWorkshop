@@ -6,8 +6,8 @@ const bodyParser = require('koa-parser');
 // import lodash
 const _ = require('lodash');
 const app = new Koa();
-const router = new Router();
 
+const router = require('./routers');
 // register bodyParser to application for POST request
 app.use(bodyParser());
 const PORT = 4000;
@@ -17,10 +17,6 @@ db.sequelize.sync()
     .then(()=>{
         console.log("DB sync");
     })
-// Create a root ('/') router with GET request & send 'Welcome to Koa' message to client.
-router.get('/',ctx => {
-    ctx.body = "Welcome to Koa";
-})
 
 // register routes middleware to app
 app.use(router.routes());
