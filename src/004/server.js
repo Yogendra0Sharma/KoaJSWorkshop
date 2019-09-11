@@ -18,15 +18,15 @@ router.get('/',ctx => {
 // Create a GET request for '/superheors' endpoint and return all super heros name
 const heros = [
     {
-        "id" : 01,
+        "id" : "1",
         "name" : "Thor"
     },
     {
-        "id" : 02,
+        "id" : "2",
         "name" : "Iron Man"
     },
     {
-        "id" : 03,
+        "id" : "3",
         "name" : "Hulk"
     }
 ];
@@ -46,6 +46,16 @@ router.post('/superheros', ctx => {
     }
     heros.push({id,name});
     ctx.body = heros;
+})
+
+// GET hero by id => /superheros/:id
+router.get('/superheros/:id', ctx => {
+    // get id request param
+    let id = ctx.params.id;
+    // find hero by id
+    let hero = heros.find( heros => heros.id === id)
+    // send response
+    ctx.body = hero;
 })
 
 // register routes middleware to app
