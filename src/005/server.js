@@ -11,7 +11,12 @@ const router = new Router();
 // register bodyParser to application for POST request
 app.use(bodyParser());
 const PORT = 4000;
-
+// sync models
+const db = require('./models');
+db.sequelize.sync()
+    .then(()=>{
+        console.log("DB sync");
+    })
 // Create a root ('/') router with GET request & send 'Welcome to Koa' message to client.
 router.get('/',ctx => {
     ctx.body = "Welcome to Koa";
