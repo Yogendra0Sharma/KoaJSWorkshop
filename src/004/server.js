@@ -3,6 +3,8 @@ const Koa = require('koa');
 const Router = require('koa-router');
 // import koa-parser
 const bodyParser = require('koa-parser');
+// import lodash
+const _ = require('lodash');
 const app = new Koa();
 const router = new Router();
 
@@ -50,12 +52,23 @@ router.post('/superheros', ctx => {
 
 // GET hero by id => /superheros/:id
 router.get('/superheros/:id', ctx => {
-    // get id request param (request param always as string)
+    // get id from request param (request param always as string)
     let id = parseInt(ctx.params.id);  // if id in heros array is int than we have to convert req param to int.
     // find hero by id
     let hero = heros.find( heros => heros.id === id)
     // send response
     ctx.body = hero;
+})
+
+
+// Delete hero by id
+router.delete('/superheros/:id', ctx => {
+    // get id from request param
+    let id = parseInt(ctx.params.id);
+    // remove hero by id using lodash
+    let result = _.remove(heros,hero => hero.id === id);
+    // send response
+    ctx.body = heros;
 })
 
 // register routes middleware to app
