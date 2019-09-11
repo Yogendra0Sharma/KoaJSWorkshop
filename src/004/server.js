@@ -39,6 +39,7 @@ router.get('/superheros', ctx => {
 // Create POST request to add new heros to heros Array
 router.post('/superheros', ctx => {
     console.log(ctx.request.body);
+    // we get request body from ctx.request.body bcoz koa-parser add parsed body to ctx.request.body
     let {id,name} = ctx.request.body;
     if(!id){
         ctx.throw('400','id is required field');
