@@ -18,15 +18,15 @@ router.get('/',ctx => {
 // Create a GET request for '/superheors' endpoint and return all super heros name
 const heros = [
     {
-        "id" : "1",
+        "id" : 1,
         "name" : "Thor"
     },
     {
-        "id" : "2",
+        "id" : 2,
         "name" : "Iron Man"
     },
     {
-        "id" : "3",
+        "id" : 3,
         "name" : "Hulk"
     }
 ];
@@ -50,8 +50,8 @@ router.post('/superheros', ctx => {
 
 // GET hero by id => /superheros/:id
 router.get('/superheros/:id', ctx => {
-    // get id request param
-    let id = ctx.params.id;
+    // get id request param (request param always as string)
+    let id = parseInt(ctx.params.id);  // if id in heros array is int than we have to convert req param to int.
     // find hero by id
     let hero = heros.find( heros => heros.id === id)
     // send response
