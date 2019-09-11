@@ -5,7 +5,7 @@ const PORT = 4000;
 // Add Middleware
 app.use(async (ctx,next) => {
     console.log(`${ctx.method} ${ctx.url} ${new Date()}`);
-    await next();
+    return await next();
 })
 app.use(async ctx => {
     ctx.body = "Hello World";
