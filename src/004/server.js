@@ -71,6 +71,25 @@ router.delete('/superheros/:id', ctx => {
     ctx.body = heros;
 })
 
+// update hero by id
+
+router.put('/superheros/:id', ctx => {
+    let { id,name } = ctx.request.body;
+    // get id from request param
+    let heroId = parseInt(ctx.params.id);
+    // find the index of the hero by id
+    const index = heros.findIndex(hero => hero.id === heroId);
+
+    // update Id
+    if (id) {
+        heros[index].id = id;
+    }
+    // update name
+    if (name) {
+        heros[index].name = name;
+    }
+    ctx.body = heros;
+})
 // register routes middleware to app
 app.use(router.routes());
 
