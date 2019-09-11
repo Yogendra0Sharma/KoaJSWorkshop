@@ -7,6 +7,11 @@ app.use(async (ctx,next) => {
     console.log(`${ctx.method} ${ctx.url} ${new Date()}`);
     return await next();
 })
+app.use(async (ctx,next) => {
+    console.log("Yet another middleware");
+    return await next();
+})
+
 app.use(async ctx => {
     ctx.body = "Hello World";
 })
