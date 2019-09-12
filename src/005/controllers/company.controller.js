@@ -18,5 +18,17 @@ module.exports = {
         }catch (err){
             ctx.throw(500,err);
         }
+    },
+
+    // find company by id
+
+    async findOne(ctx){
+        try{
+            ctx.body = await ctx.db.Company.findOne({
+                id: ctx.params.id
+            })
+        }catch (err){
+            ctx.throw(err);
+        }
     }
 };
