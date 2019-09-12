@@ -10,5 +10,13 @@ module.exports = {
         }catch (err) {
             ctx.throw(500,err);
         }
+    },
+    // find all companies
+    async find(ctx){
+        try{
+            ctx.body = await ctx.db.Company.findAll({});
+        }catch (err){
+            ctx.throw(500,err);
+        }
     }
 };

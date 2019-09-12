@@ -3,4 +3,5 @@ const router = new Router();
 const { companyCtrl } = require('../controllers');
 // define routes
 router.post('/companies',companyCtrl.create);
+router.get('/companies',companyCtrl.find);
 module.exports = router;
