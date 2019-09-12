@@ -18,6 +18,7 @@ db.sequelize.sync()
         console.log("DB sync");
     })
 
+app.context.db = db;
 // register routes middleware to app
 app.use(router.routes());
 
