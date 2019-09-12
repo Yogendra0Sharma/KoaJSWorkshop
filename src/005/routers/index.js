@@ -5,4 +5,5 @@ const { companyCtrl } = require('../controllers');
 router.post('/companies',companyCtrl.create);
 router.get('/companies',companyCtrl.find);
 router.get('/companies/:id',companyCtrl.findOne);
+router.delete('/companies/:id',companyCtrl.delete);
 module.exports = router;

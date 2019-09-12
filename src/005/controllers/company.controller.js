@@ -30,5 +30,18 @@ module.exports = {
         }catch (err){
             ctx.throw(err);
         }
+    },
+
+    // delete company by id
+    async delete(ctx){
+        try{
+            ctx.body = await ctx.db.Company.destroy({
+                where:{
+                    id: ctx.params.id
+                }
+            })
+        }catch (err){
+            ctx.throw(err);
+        }
     }
 };
